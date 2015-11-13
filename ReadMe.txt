@@ -79,3 +79,15 @@ CLR Fundementals
 			.ver = 1.0.1.0										code
 		}
 
+	3. Version Mapping (version policy) 
+		- sometimes you might want the application to run against a newer version of an assembly
+		- you can redirect your app to use a different version of an assembly
+		- able to map one version of assembly to another assembl
+
+		Why? - new version fixed a bug, better performance, new features etc
+
+		in web/app.config you can specify (without recompiling) project to point to new assembly
+
+	4. GAC (Global Aseembly Cache)
+		- multiple version of the "same" assembly present on the machine
+		- clients indicate desired version of assembly to load

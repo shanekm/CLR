@@ -15,7 +15,7 @@ namespace App
             Console.WriteLine(typeof(Calc.Calc).Assembly.CodeBase);
             Console.WriteLine(typeof(Calc.Calc).AssemblyQualifiedName);
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }
