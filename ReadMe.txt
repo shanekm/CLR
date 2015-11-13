@@ -63,9 +63,31 @@ CLR Fundementals
 
 	1. Loading assemblies steps
 		a. For all assemblies not stronly named will look in /bin
-		b. Subdirectory with same assembly name: calc.dll => \calc\calc.dll
-		c. App.config/web.config
-			- path probing
+		b. GAC
+		c. Subdirectory with same assembly name: calc.dll => \calc\calc.dll
+		d. App.config/web.config
+
+		Path Probing:
+		   <runtime>
+			<!-- use 1.0.0.1 version instead of 1.0.0.0 without rebuilding client (app) -->
+			<assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+			  <dependentAssembly>
+				<assemblyIdentity name="calc" publicKeyToken="32ab4ba45e0a69a1"	culture="neutral" />
+				<bindingRedirect oldVersion="1.0.0.0" newVersion="1.0.0.1"/>
+			  </dependentAssembly>
+			</assemblyBinding>
+		  </runtime>
+
+		Codebase:
+		   <runtime>
+			<!-- use 1.0.0.1 version instead of 1.0.0.0 without rebuilding client (app) -->
+			<assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+			  <dependentAssembly>
+				<assemblyIdentity name="calc" publicKeyToken="32ab4ba45e0a69a1"	culture="neutral" />
+				<codeBase  version="Assembly version" href="URL of assembly"/> <!-- look for assembly on internet //-->
+			  </dependentAssembly>
+			</assemblyBinding>
+		  </runtime>
 
 	2. Signing Assemblies - strong naming assembly
 		SN.exe - creates/manages key files
@@ -91,3 +113,14 @@ CLR Fundementals
 	4. GAC (Global Aseembly Cache)
 		- multiple version of the "same" assembly present on the machine
 		- clients indicate desired version of assembly to load
+		- assemblies that are installed in GAC must be strongly named (checked)
+
+		> gacutil -i calc.ll // Load this assembly to GAC
+
+	5. Native Code Cache
+		- instead of JIT compiling yout app, you can have preJITed at the time of installation
+		- ngen.exe utility run to compile IL to processor-specific code. JIT doesn't run during app run anymore
+			however adds overhead for manual steps
+
+
+
