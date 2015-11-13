@@ -62,10 +62,19 @@ CLR Fundementals
 	Public key = null - means your own assembly
 
 	1. Loading assemblies steps
-		a. For all assemblies not stronly named will look in /bin
-		b. GAC
-		c. Subdirectory with same assembly name: calc.dll => \calc\calc.dll
-		d. App.config/web.config
+
+		a. has PublicKeyToken ? => No 
+			=> look in /bin => 
+				=> Subdirectory with same assembly name: calc.dll => \calc\calc.dll
+					=> check probing path in App.config/web.config
+						=> FileNotFoundException
+
+		b. has PublicKeyToken ? => Yes
+			=> apply version policy
+				=> load from memory/ is loaded?
+					=> GAC
+						=> codeBase hint
+							=> FileNotFoundException
 
 		Path Probing:
 		   <runtime>
