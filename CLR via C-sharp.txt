@@ -92,3 +92,22 @@
 			if (e != null) { ... }
 
 
+	C. Namespaces
+		- allow logical grouping of related types
+
+	D. CLR Run Time
+		a. CLR creates 1MB Thread Stack (stack)
+		b. JIT compiler converts M3's IL code into native CPU
+		c. notices all types that are used inside M3 (Employee, Int32, Manager, String ("Joe"))
+		d. allocates memory for objects, creates Manager, Employee opjects and stores them on Heap 
+		e. CLR allocates local variables on stack (e (Employee) = null, year = 0 etc)
+		f. JIT compiler executes creating pointers, addresses
+
+		public void M3(){
+			Employee e;
+			Int32 year,
+			e = new Manager();
+			e = Employee.Lookup("Joe");
+			year = e.GetYearEmployed();
+			e.GetProgressReport();
+		}
