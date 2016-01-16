@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "Fundementals\App\App\App.csproj", "{7151B5B6-7F2B-4125-8EC4-6805D79BD985}"
 EndProject
@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calc", "Fundementals\Calc\C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Start", "Start", "{3D44D7A6-549A-4CB7-A368-18F2032E2A6A}"
 	ProjectSection(SolutionItems) = preProject
+		CLR via C-sharp.txt = CLR via C-sharp.txt
 		ReadMe.txt = ReadMe.txt
 	EndProjectSection
 EndProject

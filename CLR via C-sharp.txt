@@ -1,0 +1,94 @@
+1. CLR Basics
+
+	CLR - common language runtime (memory management, garbage collection, type safety etc)
+		- many compilers (C#, F#, C++, VB) => compile code to Managed Module
+
+	Managed Module - Compiler => compiles PE32 (32bit)/ PE(32+) file - used by CLR to execute\
+		C# (source code) => C# compiler => managed module (PE32/+)
+		a. Header
+		b. CLR Header
+		c. IL code
+		d. metadata
+
+	Assembly - CLR works with assemblies. Logical grouping of one or more managed modules
+		- comipler groups/combines many managed modules into assembly
+		- reusable component
+		
+2. Executing Assembly Code
+	Main(){
+		Console.WriteLine("1") => CLR looks and loads assembly (mscorelib.dll) into memory, JITed to CPU instructuions
+		Console.WriteLine("2") => this assmebly (structure) has been loaded, it JITed again into CPU instructions
+			// CLR recognizes any references and loads them into memory (other assemblies when needed)
+	} 
+
+3. Framework Class Library (FCL)
+	- prewritten by Microsoft, used for WPF, MVC etc
+
+	System - all basic types used by app
+	System.Data - db 
+	System.IO - files
+	System.Net - low-level network communication
+	System.Text - ASCII and Unicode types
+	System.Threading - async and synch access operations
+	System.XML - types used for processing XML 
+
+4. CTS
+	- specifications about types, properties, methods etc
+	- specification of how types are created, defined and used
+	- access members (public, internal, private etc)
+
+5. Stronbly Named Assemblies vs. Shared/Private assemblies
+	a. Strongly named - public/private key, culture, version
+		- can be deployed to GAC
+	b. Deployed to /bin usually
+
+
+6. Type Fundementals
+	
+	A. System.Object - basic .Net type
+		- all types derive from System.Object
+
+		Public Methods:
+			a. Equals()
+			b. GetHashCode()
+			c. ToString()
+			d. GetType() - return instance of type
+
+		Private Methods:
+			a. MemberwiseClone - copy properties of object
+			b. Finalize() - called when GC determines that object is out of scope
+
+		new - ex: new Employee() =>
+			- calculate bytes needed for object creation
+			- allocate memory on Managed Heap
+			- set that memory to 0's
+			- constructore called
+			- return reference to this created object
+
+	B. Casting Between Types
+		- CLR allows you to cast object to it's type or any of its base types
+		- type safe - checks when casting between types 
+
+		Employee e = new Employee(); // OK
+		Object o = new Employee();	// OK implicit casting from derived to base
+		Manager : Employee => managers base type is employee
+
+		// some method
+		public void Promote(Object o)
+		{
+			// CLR confirms if Object o is in fact 'o' is Employee or Employee's drived type
+			// If DateTime is passed to 'o' CLR will throw InvalidCastException
+			Employee e = (Employee)o;
+		}
+
+		
+		a. is Operator - worse than 'as', CLR checks twice
+			if (o is Employee) {				// first check
+				Employee e = (Employee)o;		// second check 
+			}
+
+		b. as Operator - better, checked only once
+			Employee e = o as Employee			// checked only once
+			if (e != null) { ... }
+
+
