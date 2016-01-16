@@ -2,3 +2,7 @@ C:\Users\Shane.Kmiecik\Documents\Visual Studio 2013\Projects\CLR\Fundementals\Ca
 C:\Users\Shane.Kmiecik\Documents\Visual Studio 2013\Projects\CLR\Fundementals\Calc\Calc\bin\Debug\Calc.pdb
 C:\Users\Shane.Kmiecik\Documents\Visual Studio 2013\Projects\CLR\Fundementals\Calc\Calc\obj\Debug\Calc.dll
 C:\Users\Shane.Kmiecik\Documents\Visual Studio 2013\Projects\CLR\Fundementals\Calc\Calc\obj\Debug\Calc.pdb
+C:\dev\CLR\Fundementals\Calc\Calc\bin\Debug\Calc.dll
+C:\dev\CLR\Fundementals\Calc\Calc\bin\Debug\Calc.pdb
+C:\dev\CLR\Fundementals\Calc\Calc\obj\Debug\Calc.dll
+C:\dev\CLR\Fundementals\Calc\Calc\obj\Debug\Calc.pdb
