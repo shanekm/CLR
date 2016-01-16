@@ -6,3 +6,4 @@ C:\Users\Shane.Kmiecik\Documents\Visual Studio 2013\Projects\CLR\Fundementals\Ap
 C:\Users\Shane.Kmiecik\Documents\Visual Studio 2013\Projects\CLR\Fundementals\App\App\obj\Debug\App.pdb
 C:\Users\Shane.Kmiecik\Documents\Visual Studio 2013\Projects\CLR\Fundementals\App\App\bin\Debug\Calc.dll
 C:\Users\Shane.Kmiecik\Documents\Visual Studio 2013\Projects\CLR\Fundementals\App\App\bin\Debug\Calc.pdb
+C:\dev\CLR\Fundementals\App\App\bin\Debug\App.exe.config
