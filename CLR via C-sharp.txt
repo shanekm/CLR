@@ -96,18 +96,50 @@
 		- allow logical grouping of related types
 
 	D. CLR Run Time
-		a. CLR creates 1MB Thread Stack (stack)
-		b. JIT compiler converts M3's IL code into native CPU
-		c. notices all types that are used inside M3 (Employee, Int32, Manager, String ("Joe"))
-		d. allocates memory for objects, creates Manager, Employee opjects and stores them on Heap 
-		e. CLR allocates local variables on stack (e (Employee) = null, year = 0 etc)
-		f. JIT compiler executes creating pointers, addresses
+		ex 1:
+			a. M1 starts to execute
+			b. memory is allocated for objects in M1, local string 'name' is pushed onto thread stack
+			c. M1 calls M2, address in 'name' local variable is pushed onto stack
+			d. inside M2 method, stack location will be indentified using param 's'
+			e. return address is pushed onto stack - when called method should return when it finishes
+			f. M2 starts to execute
+			g. memory allocated for lenght, tally
+			h. M2 starts to execute code inside it
+			i. M2 gets return address from stack (return statement)
+			j. M1 continues to execute
 
-		public void M3(){
-			Employee e;
-			Int32 year,
-			e = new Manager();
-			e = Employee.Lookup("Joe");
-			year = e.GetYearEmployed();
-			e.GetProgressReport();
-		}
+			public void M1 {
+				string name = "Joe";
+				M2(name);
+				return;
+			}
+
+			public void M2 {
+				Int32 lenght = s.Lenght;
+				Int32 tally;
+				...
+				return;
+			}
+
+		ex 2:
+			a. window process loads CLR into it
+			b. CLR creates 1MB Thread Stack (stack, initialized)
+			c. Managed heap is initialized
+			e. CLR looks inside the method and loads all assemblies with their types etc
+			f. CLR extracts info about those types from metadata and creates some data structures to represent those types 
+				- notices all types that are used inside M3 (Employee, Int32, Manager, String ("Joe"))
+				- on managed heap (initialized to 0's)
+			g. Memory from stack is allocated for local variables "Employee", "year" and set to null, 0
+			h. 'new' Manager object is created on Managed Heap and it's address is stored on Stack into variable 'e'
+			i. 'e' no longer points to first Manager. Candidate for GC collection
+			j. JIT compiler converts M3's IL code into native CPU
+			k. JIT compiler executes creating pointers, addresses
+
+			public void M3(){
+				Employee e;
+				Int32 year,
+				e = new Manager();
+				e = Employee.Lookup("Joe");
+				year = e.GetYearEmployed();
+				e.GetProgressReport();
+			}
